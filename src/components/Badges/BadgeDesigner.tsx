@@ -141,14 +141,14 @@ export const BadgeDesigner: React.FC<BadgeDesignerProps> = ({
         <div className="flex items-center space-x-2">
           <button
             onClick={() => setSelectedTemplate(defaultTemplate)}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors flex items-center space-x-2"
           >
             <Plus className="w-4 h-4" />
             <span>New Template</span>
           </button>
           <button
             onClick={() => onSaveTemplate(selectedTemplate)}
-            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
+            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors flex items-center space-x-2"
           >
             <Save className="w-4 h-4" />
             <span>Save Template</span>
@@ -357,7 +357,7 @@ export const BadgeDesigner: React.FC<BadgeDesignerProps> = ({
 
                     <button
                       onClick={() => deleteField(selectedField!)}
-                      className="w-full bg-red-600 text-white py-2 rounded text-sm hover:bg-red-700 transition-colors"
+                      className="w-full bg-red-600 text-white py-2 rounded text-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors"
                     >
                       Delete Element
                     </button>

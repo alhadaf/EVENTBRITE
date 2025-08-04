@@ -98,7 +98,7 @@ export const ScannerDashboard: React.FC<ScannerDashboardProps> = ({
         </div>
         <button
           onClick={() => setShowAddWalkIn(true)}
-          className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
+          className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors flex items-center space-x-2"
         >
           <UserPlus className="w-4 h-4" />
           <span>Add Walk-in</span>
@@ -215,7 +215,7 @@ export const ScannerDashboard: React.FC<ScannerDashboardProps> = ({
                     ) : (
                       <button
                         onClick={() => handleCheckIn(attendee.id)}
-                        className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                       className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
                       >
                         Check In
                       </button>
@@ -233,7 +233,7 @@ export const ScannerDashboard: React.FC<ScannerDashboardProps> = ({
               <p className="text-gray-500 mb-4">No attendees match your search criteria</p>
               <button
                 onClick={() => setShowAddWalkIn(true)}
-                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
               >
                 Add as Walk-in
               </button>
@@ -281,13 +281,13 @@ export const ScannerDashboard: React.FC<ScannerDashboardProps> = ({
               <div className="flex space-x-2">
                 <button
                   onClick={handleAddWalkIn}
-                  className="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors"
+                  className="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
                 >
                   Add & Check In
                 </button>
                 <button
                   onClick={() => setShowAddWalkIn(false)}
-                  className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
                 >
                   Cancel
                 </button>
@@ -297,7 +297,7 @@ export const ScannerDashboard: React.FC<ScannerDashboardProps> = ({
             <div className="space-y-3">
               <button
                 onClick={() => setShowAddWalkIn(true)}
-                className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+                className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors flex items-center justify-center space-x-2"
               >
                 <UserPlus className="w-4 h-4" />
                 <span>Add Walk-in</span>

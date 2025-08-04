@@ -84,10 +84,10 @@ export const QRScanner: React.FC<QRScannerProps> = ({
         </div>
         <button
           onClick={onToggleScanner}
-          className={`px-4 py-2 rounded-lg font-medium flex items-center space-x-2 transition-colors ${
+          className={`px-4 py-2 rounded-lg font-medium flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors ${
             isActive
-              ? 'bg-red-600 text-white hover:bg-red-700'
-              : 'bg-green-600 text-white hover:bg-green-700'
+              ? 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500'
+              : 'bg-green-600 text-white hover:bg-green-700 focus:ring-green-500'
           }`}
         >
           {isActive ? <CameraOff className="w-4 h-4" /> : <Camera className="w-4 h-4" />}
@@ -172,7 +172,7 @@ export const QRScanner: React.FC<QRScannerProps> = ({
 
           <button
             onClick={mockScan}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium"
             disabled={!isActive}
           >
             Simulate QR Scan (Demo)
@@ -199,7 +199,7 @@ export const QRScanner: React.FC<QRScannerProps> = ({
               </div>
               <button
                 onClick={handleManualScan}
-                className="w-full bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700 transition-colors font-medium"
+                className="w-full bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors font-medium"
               >
                 Manual Check-in
               </button>

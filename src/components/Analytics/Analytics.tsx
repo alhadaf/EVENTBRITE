@@ -18,11 +18,11 @@ export const Analytics: React.FC = () => {
           <p className="text-gray-500 mt-1">Insights and performance metrics for your events</p>
         </div>
         <div className="flex items-center space-x-2">
-          <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+          <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">
             <Filter className="w-4 h-4" />
             <span>Filter</span>
           </button>
-          <button className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+          <button className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
             <Download className="w-4 h-4" />
             <span>Export Report</span>
           </button>

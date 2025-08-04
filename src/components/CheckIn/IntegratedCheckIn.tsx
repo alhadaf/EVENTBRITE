@@ -94,7 +94,7 @@ export const IntegratedCheckIn: React.FC<IntegratedCheckInProps> = ({
         {selectedEventId && (
           <button
             onClick={() => setSelectedEventId(null)}
-            className="px-4 py-2 text-blue-600 hover:text-blue-800 flex items-center gap-2 transition-colors"
+            className="px-4 py-2 text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg flex items-center gap-2 transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m15 18-6-6 6-6"/>
@@ -135,13 +135,13 @@ export const IntegratedCheckIn: React.FC<IntegratedCheckInProps> = ({
         <div>
           <div className="flex border-b border-gray-200 mb-6 overflow-x-auto">
             <button
-              className={`px-4 py-2 font-medium whitespace-nowrap ${activeTab === 'scanner' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+              className={`px-4 py-2 font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors ${activeTab === 'scanner' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
               onClick={() => setActiveTab('scanner')}
             >
               QR Scanner
             </button>
             <button
-              className={`px-4 py-2 font-medium whitespace-nowrap ${activeTab === 'walkin' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+              className={`px-4 py-2 font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors ${activeTab === 'walkin' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
               onClick={() => setActiveTab('walkin')}
             >
               Walk-in Registration

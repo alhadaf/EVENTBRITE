@@ -108,6 +108,7 @@ export const Settings: React.FC = () => {
                   <div className="flex items-center justify-between">
                     <h4 className="font-medium text-gray-900">Team Members</h4>
                     <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm">
+                    <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors text-sm">
                       Add User
                     </button>
                   </div>
@@ -194,7 +195,7 @@ export const Settings: React.FC = () => {
           {renderTabContent()}
           
           <div className="mt-6 pt-6 border-t border-gray-200">
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
               Save Changes
             </button>
           </div>

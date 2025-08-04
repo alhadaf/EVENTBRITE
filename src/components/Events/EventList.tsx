@@ -49,7 +49,7 @@ export const EventList: React.FC<EventListProps> = ({
         </div>
         <button
           onClick={() => setShowEventForm(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors flex items-center space-x-2"
         >
           <Plus className="w-4 h-4" />
           <span>Create Event</span>
@@ -169,7 +169,7 @@ export const EventList: React.FC<EventListProps> = ({
             <p className="text-gray-500 mb-4">Get started by creating your first event</p>
             <button
               onClick={() => setShowEventForm(true)}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
             >
               Create Event
             </button>
