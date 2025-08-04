@@ -173,7 +173,6 @@ export const QRScanner: React.FC<QRScannerProps> = ({
           <button
             onClick={mockScan}
             className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium"
-            disabled={!isActive}
           >
             Simulate QR Scan (Demo)
           </button>

@@ -79,7 +79,6 @@ export const useAuth = (): UseAuthReturn => {
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      // Mock login - in real app, make API call
       let user: User;
       let token: string;
       
@@ -125,14 +124,8 @@ export const useAuth = (): UseAuthReturn => {
         throw new Error('Invalid credentials');
       }
       
-      // Set cookie first, then update user state
       Cookies.set('auth_token', token, { expires: 7, path: '/' });
-      
-      // Set user state
       setUser(user);
-      
-      // Force a small delay to ensure state is updated
-      await new Promise(resolve => setTimeout(resolve, 100));
     } catch (error) {
       console.error('Login error:', error);
       throw error;

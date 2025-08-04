@@ -335,12 +335,6 @@ function AppContent() {
 function App() {
   const { isAuthenticated, isLoading, user } = useAuth();
   
-  // Force re-render when authentication state changes
-  React.useEffect(() => {
-    // This effect will run whenever isAuthenticated changes
-    console.log('Authentication state changed:', isAuthenticated);
-  }, [isAuthenticated, user]);
-
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">

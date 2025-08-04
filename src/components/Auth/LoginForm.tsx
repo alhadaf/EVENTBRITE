@@ -14,17 +14,7 @@ export const LoginForm: React.FC = () => {
     setError('');
     
     try {
-      // Add a small delay before login to ensure clean state
-      setTimeout(async () => {
-        try {
-          await login(email, password);
-          // Force a page reload after successful login
-          // This ensures the app properly recognizes the authentication state
-          window.location.href = '/';
-        } catch (err) {
-          setError('Invalid email or password');
-        }
-      }, 100);
+      await login(email, password);
     } catch (err) {
       setError('Invalid email or password');
     }
