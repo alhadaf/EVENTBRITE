@@ -203,13 +203,14 @@ function Dashboard() {
 
 function AppContent() {
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user } = useAuth();
 
   // Scanner role should only see check-in functionality
   if (user?.role === 'scanner') {
     return (
       <div className="min-h-screen bg-gray-50">
-        <div className="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+        <div className="bg-white shadow-sm border-b border-gray-200 px-4 lg:px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -222,7 +223,7 @@ function AppContent() {
             </div>
           </div>
         </div>
-        <main className="p-6">
+        <main className="p-4 lg:p-6">
           <IntegratedCheckIn
             events={mockEvents}
             attendees={mockAttendees}
@@ -314,11 +315,16 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+    <div className="min-h-screen bg-gray-50 lg:flex">
+      <Sidebar 
+        activeTab={activeTab} 
+        onTabChange={setActiveTab}
+        isOpen={sidebarOpen}
+        onToggle={() => setSidebarOpen(!sidebarOpen)}
+      />
       <div className="flex-1 flex flex-col">
-        <Header />
-        <main className="flex-1 p-6">
+        <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
+        <main className="flex-1 p-4 lg:p-6">
           {renderContent()}
         </main>
       </div>

@@ -90,47 +90,48 @@ export const EventList: React.FC<EventListProps> = ({
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="text-left py-3 px-6 font-medium text-gray-500 text-sm">Event</th>
-                <th className="text-left py-3 px-6 font-medium text-gray-500 text-sm">Date</th>
-                <th className="text-left py-3 px-6 font-medium text-gray-500 text-sm">Venue</th>
-                <th className="text-left py-3 px-6 font-medium text-gray-500 text-sm">Attendees</th>
-                <th className="text-left py-3 px-6 font-medium text-gray-500 text-sm">Status</th>
-                <th className="text-left py-3 px-6 font-medium text-gray-500 text-sm">Actions</th>
+                <th className="text-left py-3 px-3 lg:px-6 font-medium text-gray-500 text-sm">Event</th>
+                <th className="text-left py-3 px-3 lg:px-6 font-medium text-gray-500 text-sm hidden sm:table-cell">Date</th>
+                <th className="text-left py-3 px-3 lg:px-6 font-medium text-gray-500 text-sm hidden md:table-cell">Venue</th>
+                <th className="text-left py-3 px-3 lg:px-6 font-medium text-gray-500 text-sm">Attendees</th>
+                <th className="text-left py-3 px-3 lg:px-6 font-medium text-gray-500 text-sm">Status</th>
+                <th className="text-left py-3 px-3 lg:px-6 font-medium text-gray-500 text-sm">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {filteredEvents.map((event) => (
                 <tr key={event.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6">
                     <div>
                       <h4 className="font-medium text-gray-900">{event.name}</h4>
-                      <p className="text-sm text-gray-500 truncate max-w-xs">{event.description}</p>
+                      <p className="text-sm text-gray-500 truncate max-w-xs sm:hidden">{new Date(event.startDate).toLocaleDateString()}</p>
+                      <p className="text-sm text-gray-500 truncate max-w-xs hidden sm:block">{event.description}</p>
                     </div>
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6 hidden sm:table-cell">
                     <div className="flex items-center space-x-1 text-sm text-gray-600">
                       <Calendar className="w-4 h-4" />
                       <span>{new Date(event.startDate).toLocaleDateString()}</span>
                     </div>
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6 hidden md:table-cell">
                     <div className="flex items-center space-x-1 text-sm text-gray-600">
                       <MapPin className="w-4 h-4" />
                       <span>{event.venue}</span>
                     </div>
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6">
                     <div className="flex items-center space-x-1 text-sm text-gray-600">
                       <Users className="w-4 h-4" />
                       <span>{event.checkedInCount}/{event.totalAttendees}</span>
                     </div>
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(event.status)}`}>
                       {event.status.charAt(0).toUpperCase() + event.status.slice(1)}
                     </span>
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6">
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => {
@@ -146,11 +147,11 @@ export const EventList: React.FC<EventListProps> = ({
                           setSelectedEvent(event);
                           setShowEventForm(true);
                         }}
-                        className="text-gray-600 hover:text-gray-800 text-sm font-medium"
+                        className="text-gray-600 hover:text-gray-800 text-sm font-medium hidden sm:inline"
                       >
                         Edit
                       </button>
-                      <button className="text-gray-400 hover:text-gray-600">
+                      <button className="text-gray-400 hover:text-gray-600 sm:hidden">
                         <MoreVertical className="w-4 h-4" />
                       </button>
                     </div>

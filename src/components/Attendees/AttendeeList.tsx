@@ -158,17 +158,17 @@ export const AttendeeList: React.FC<AttendeeListProps> = ({
                     className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                   />
                 </th>
-                <th className="text-left py-3 px-6 font-medium text-gray-500 text-sm">Attendee</th>
-                <th className="text-left py-3 px-6 font-medium text-gray-500 text-sm">Ticket Type</th>
-                <th className="text-left py-3 px-6 font-medium text-gray-500 text-sm">Status</th>
-                <th className="text-left py-3 px-6 font-medium text-gray-500 text-sm">Check-in</th>
-                <th className="text-left py-3 px-6 font-medium text-gray-500 text-sm">Actions</th>
+                <th className="text-left py-3 px-3 lg:px-6 font-medium text-gray-500 text-sm">Attendee</th>
+                <th className="text-left py-3 px-3 lg:px-6 font-medium text-gray-500 text-sm hidden sm:table-cell">Ticket Type</th>
+                <th className="text-left py-3 px-3 lg:px-6 font-medium text-gray-500 text-sm">Status</th>
+                <th className="text-left py-3 px-3 lg:px-6 font-medium text-gray-500 text-sm hidden md:table-cell">Check-in</th>
+                <th className="text-left py-3 px-3 lg:px-6 font-medium text-gray-500 text-sm">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {filteredAttendees.map((attendee) => (
                 <tr key={attendee.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6">
                     <input
                       type="checkbox"
                       checked={selectedAttendees.includes(attendee.id)}
@@ -176,7 +176,7 @@ export const AttendeeList: React.FC<AttendeeListProps> = ({
                       className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                     />
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
                         <span className="text-sm font-medium text-gray-600">
@@ -189,30 +189,31 @@ export const AttendeeList: React.FC<AttendeeListProps> = ({
                           {attendee.isVip && <Star className="w-4 h-4 text-yellow-500 fill-current" />}
                         </h4>
                         <p className="text-sm text-gray-500">{attendee.email}</p>
+                        <p className="text-xs text-gray-400 sm:hidden">{attendee.ticketType}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6 hidden sm:table-cell">
                     <span className="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">
                       {attendee.ticketType}
                     </span>
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6">
                     <div className="flex items-center space-x-2">
                       {attendee.isCheckedIn ? (
                         <div className="flex items-center space-x-1 text-green-600">
                           <UserCheck className="w-4 h-4" />
-                          <span className="text-sm font-medium">Checked In</span>
+                          <span className="text-sm font-medium hidden lg:inline">Checked In</span>
                         </div>
                       ) : (
                         <div className="flex items-center space-x-1 text-gray-400">
                           <UserCheck className="w-4 h-4" />
-                          <span className="text-sm">Not Checked In</span>
+                          <span className="text-sm hidden lg:inline">Not Checked In</span>
                         </div>
                       )}
                     </div>
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6 hidden md:table-cell">
                     {attendee.checkedInAt ? (
                       <div className="text-sm text-gray-600">
                         {new Date(attendee.checkedInAt).toLocaleString()}
@@ -221,7 +222,7 @@ export const AttendeeList: React.FC<AttendeeListProps> = ({
                       <span className="text-sm text-gray-400">-</span>
                     )}
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-3 lg:px-6">
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => onToggleVip(attendee.id)}
@@ -232,14 +233,14 @@ export const AttendeeList: React.FC<AttendeeListProps> = ({
                       </button>
                       <button
                         onClick={() => onSendEmail(attendee.id)}
-                        className="p-1 rounded hover:bg-gray-100 text-gray-400 hover:text-blue-600"
+                        className="p-1 rounded hover:bg-gray-100 text-gray-400 hover:text-blue-600 hidden sm:inline-block"
                         title="Send Email"
                       >
                         <Mail className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => onGenerateBadge(attendee.id)}
-                        className="p-1 rounded hover:bg-gray-100 text-gray-400 hover:text-green-600"
+                        className="p-1 rounded hover:bg-gray-100 text-gray-400 hover:text-green-600 hidden sm:inline-block"
                         title="Generate Badge"
                       >
                         <QrCode className="w-4 h-4" />

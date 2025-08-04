@@ -22,7 +22,8 @@ export const useAuth = (): UseAuthReturn => {
       let mockUser: User;
       
       // Determine user based on token
-      if (token === 'mock-jwt-token') {
+      try {
+        if (token === 'mock-jwt-token') {
         mockUser = {
           id: '1',
           email: 'admin@eventmanager.com',
@@ -66,6 +67,11 @@ export const useAuth = (): UseAuthReturn => {
       }
       
       setUser(mockUser);
+      } catch (error) {
+        console.error('Error parsing auth token:', error);
+        // Clear invalid token
+        Cookies.remove('auth_token');
+      }
     }
     setIsLoading(false);
   }, []);
@@ -77,7 +83,9 @@ export const useAuth = (): UseAuthReturn => {
       let user: User;
       let token: string;
       
-      if (email.toLowerCase() === 'admin@eventmanager.com' && password === 'admin') {
+      const emailLower = email?.toLowerCase() || '';
+      
+      if (emailLower === 'admin@eventmanager.com' && password === 'admin') {
         token = 'mock-jwt-token';
         user = {
           id: '1',
@@ -86,7 +94,7 @@ export const useAuth = (): UseAuthReturn => {
           role: 'admin',
           organizationId: 'org-1',
         };
-      } else if (email.toLowerCase() === 'scanner@eventmanager.com' && password === 'scanner') {
+      } else if (emailLower === 'scanner@eventmanager.com' && password === 'scanner') {
         token = 'mock-jwt-token-scanner';
         user = {
           id: '2',
@@ -95,7 +103,7 @@ export const useAuth = (): UseAuthReturn => {
           role: 'scanner',
           organizationId: 'org-1',
         };
-      } else if (email.toLowerCase() === 'organizer@eventmanager.com' && password === 'organizer') {
+      } else if (emailLower === 'organizer@eventmanager.com' && password === 'organizer') {
         token = 'mock-jwt-token-organizer';
         user = {
           id: '3',
@@ -104,7 +112,7 @@ export const useAuth = (): UseAuthReturn => {
           role: 'organizer',
           organizationId: 'org-1',
         };
-      } else if (email.toLowerCase() === 'staff@eventmanager.com' && password === 'staff') {
+      } else if (emailLower === 'staff@eventmanager.com' && password === 'staff') {
         token = 'mock-jwt-token-staff';
         user = {
           id: '4',
@@ -134,7 +142,11 @@ export const useAuth = (): UseAuthReturn => {
   };
 
   const logout = () => {
-    Cookies.remove('auth_token');
+    try {
+      Cookies.remove('auth_token', { path: '/' });
+    } catch (error) {
+      console.error('Error removing auth token:', error);
+    }
     setUser(null);
     // Force page reload to redirect to login page
     window.location.href = '/';

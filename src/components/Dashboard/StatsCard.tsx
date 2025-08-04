@@ -45,20 +45,20 @@ export const StatsCard: React.FC<StatsCardProps> = ({
   const isPositive = change >= 0;
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 lg:p-6 hover:shadow-md transition-shadow">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-medium text-gray-500 mb-1">{title}</p>
-          <p className="text-3xl font-bold text-gray-900">{value}</p>
+          <p className="text-2xl lg:text-3xl font-bold text-gray-900">{value}</p>
           <div className="flex items-center mt-2">
             <span className={`text-sm font-medium ${isPositive ? colors.change : 'text-red-500'}`}>
               {isPositive ? '+' : ''}{change}%
             </span>
-            <span className="text-sm text-gray-500 ml-1">{changeLabel}</span>
+            <span className="text-xs lg:text-sm text-gray-500 ml-1">{changeLabel}</span>
           </div>
         </div>
-        <div className={`w-12 h-12 ${colors.bg} rounded-lg flex items-center justify-center`}>
-          <Icon className={`w-6 h-6 ${colors.icon}`} />
+        <div className={`w-10 h-10 lg:w-12 lg:h-12 ${colors.bg} rounded-lg flex items-center justify-center`}>
+          <Icon className={`w-5 h-5 lg:w-6 lg:h-6 ${colors.icon}`} />
         </div>
       </div>
     </div>

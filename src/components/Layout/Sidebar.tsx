@@ -8,29 +8,65 @@ import {
   Settings, 
   BarChart3,
   Download,
-  Zap
+  Zap,
+  Menu,
+  X
 } from 'lucide-react';
+import { useAuth } from '../../hooks/useAuth';
 
 interface SidebarProps {
   activeTab: string;
   onTabChange: (tab: string) => void;
+  isOpen: boolean;
+  onToggle: () => void;
 }
 
-const menuItems = [
-  { id: 'dashboard', label: 'Dashboard', icon: Home },
-  { id: 'events', label: 'Events', icon: Calendar },
-  { id: 'attendees', label: 'Attendees', icon: Users },
-  { id: 'checkin', label: 'Check-in', icon: QrCode },
-  { id: 'badges', label: 'Badge Designer', icon: Badge },
-  { id: 'analytics', label: 'Analytics', icon: BarChart3 },
-  { id: 'exports', label: 'Data Export', icon: Download },
-  { id: 'integrations', label: 'Integrations', icon: Zap },
-  { id: 'settings', label: 'Settings', icon: Settings },
-];
+const getMenuItemsForRole = (role: string) => {
+  const baseItems = [
+    { id: 'dashboard', label: 'Dashboard', icon: Home, roles: ['admin', 'organizer', 'staff'] },
+    { id: 'events', label: 'Events', icon: Calendar, roles: ['admin', 'organizer'] },
+    { id: 'attendees', label: 'Attendees', icon: Users, roles: ['admin', 'organizer', 'staff'] },
+    { id: 'checkin', label: 'Check-in', icon: QrCode, roles: ['admin', 'organizer', 'staff', 'scanner'] },
+    { id: 'badges', label: 'Badge Designer', icon: Badge, roles: ['admin', 'organizer'] },
+    { id: 'analytics', label: 'Analytics', icon: BarChart3, roles: ['admin', 'organizer'] },
+    { id: 'exports', label: 'Data Export', icon: Download, roles: ['admin', 'organizer'] },
+    { id: 'integrations', label: 'Integrations', icon: Zap, roles: ['admin'] },
+    { id: 'settings', label: 'Settings', icon: Settings, roles: ['admin', 'organizer', 'staff'] },
+  ];
 
-export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
+  return baseItems.filter(item => item.roles.includes(role));
+};
+
+export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange, isOpen, onToggle }) => {
+  const { user } = useAuth();
+  const menuItems = getMenuItemsForRole(user?.role || 'staff');
+
   return (
-    <div className="w-64 bg-white shadow-lg border-r border-gray-200 h-full">
+    <>
+      {/* Mobile overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={onToggle}
+        />
+      )}
+      
+      {/* Sidebar */}
+      <div className={`
+        fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white shadow-lg border-r border-gray-200 h-full
+        transform transition-transform duration-300 ease-in-out lg:transform-none
+        ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      `}>
+        {/* Mobile close button */}
+        <div className="lg:hidden flex justify-end p-4">
+          <button
+            onClick={onToggle}
+            className="p-2 rounded-lg hover:bg-gray-100"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+        
       <div className="p-6 border-b border-gray-200">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -68,5 +104,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
         </ul>
       </nav>
     </div>
+    </>
   );
 };

@@ -59,7 +59,7 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+        <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-white rounded-lg shadow-lg border border-gray-200 z-50 max-h-96 overflow-hidden">
           <div className="p-4 border-b border-gray-200">
             <div className="flex items-center justify-between">
               <h3 className="font-semibold text-gray-900">Notifications</h3>
@@ -92,7 +92,7 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({
                     {getIcon(notification.type)}
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-gray-900">{notification.title}</p>
-                      <p className="text-sm text-gray-600 mt-1">{notification.message}</p>
+                      <p className="text-sm text-gray-600 mt-1 break-words">{notification.message}</p>
                       <p className="text-xs text-gray-400 mt-2">
                         {notification.timestamp.toLocaleString()}
                       </p>
